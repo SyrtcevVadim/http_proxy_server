@@ -1,0 +1,12 @@
+{
+  "name": "http_proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sources/index.js",
+  "scripts": {
+    "start_proxy": "node sources/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
