@@ -8,9 +8,17 @@ import config from "config";
 const hostAddress = config.get("ProxyServer.hostAddress");
 const listeningPort = config.get("ProxyServer.listeningPort");
 
+const loggingEnabled = config.get("Logger.loggingEnabled");
 const logsDirectory = config.get("Logger.logsDirectory");
 const logFileName = config.get("Logger.logFileName");
 
-let logger = new Logger(`${logsDirectory}/${logFileName}`);
-let proxyServer = new ProxyServer(logger);
+let proxyServer;
+if (loggingEnabled) {
+    let logger = new Logger(`${logsDirectory}/${logFileName}`);
+    proxyServer = new ProxyServer(logger);
+}
+else {
+    proxyServer = new ProxyServer();
+}
+
 proxyServer.start(hostAddress, listeningPort);
