@@ -1,3 +1,5 @@
+"use strict";
+
 const http = require("node:http");
 const config = require("config")
 
@@ -18,7 +20,7 @@ function requestListener(clientToProxy, proxyToClient) {
     let proxyToServer = http.request({
         port: STANDARD_HTTP_PORT,
         host: requestedUrlInfo.host,
-        path: requestedUrlInfo.url,
+        path: clientToProxy.url,
         method: requestedUrlInfo.method,
         headers: requestedUrlInfo.headers
     }, (serverToProxy) => {
@@ -40,6 +42,10 @@ function onProxyServerStartup(message) {
 function startProxyServer(hostAddress,listeningPort) {
     let proxyServer = http.createServer(requestListener);
     
+    proxyServer.on("close", () => {
+        console.log("Прокси сервер прекратил работу.");
+    })
+
     proxyServer.listen({
         port: listeningPort,
         host: hostAddress

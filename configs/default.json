@@ -1,0 +1,6 @@
+{
+    "ProxyServer": {
+        "hostAddress": "localhost",
+        "listeningPort": 8080
+    }
+}
