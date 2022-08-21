@@ -2,5 +2,10 @@
     "ProxyServer": {
         "hostAddress": "localhost",
         "listeningPort": 8080
+    },
+    "Logger": {
+        "loggingEnabled": true,
+        "logsDirectory": "logs",
+        "logFileName": "latest.txt"
     }
 }
