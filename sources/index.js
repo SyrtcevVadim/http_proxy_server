@@ -1,3 +1,4 @@
 "use strict"
+const proxyServer = require("./proxyServer.js");
 
-console.log("Hello, world!");
+proxyServer.startProxyServer("localhost", 8080);
